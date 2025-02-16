@@ -90,7 +90,6 @@ public class CheckStudent extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
         String tripDate = request.getParameter("tripDate");
         String routeID = request.getParameter("routeID");
         String timePeriod = request.getParameter("timePeriod");

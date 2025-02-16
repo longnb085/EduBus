@@ -16,6 +16,8 @@ import model.User;
  */
 public class AccountDAO extends DBContext {
 
+    Connection connection = getConnection();
+
     public Account checkAcc(String user, String pass) {
         String sql = "select * from Account where Username = '" + user + "' and Password = '" + pass + "'";
 
