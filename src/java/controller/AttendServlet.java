@@ -158,6 +158,10 @@ public class AttendServlet extends HttpServlet {
                 sp.deleteAttend(aid);
                 response.sendRedirect("attend");
                 break;
+            default:
+                request.setAttribute("errorMessage", "Invalid action requested.");
+                request.getRequestDispatcher("attend.jsp").forward(request, response);
+                break;
 
         }
 

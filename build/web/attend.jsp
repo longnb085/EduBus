@@ -83,7 +83,16 @@
 
         <br/>
         <br/>
-
+        <c:if test="${not empty errorMessage}">
+            <div id="errorDiv" style="padding: 10px; background-color: red; color: white; text-align: center; border-radius: 5px; margin-bottom: 10px;">
+                ${errorMessage}
+            </div>
+            <script>
+                setTimeout(function () {
+                    document.getElementById("errorDiv").style.display = "none";
+                }, 3000);
+            </script>
+        </c:if>
         <div class="container d-flex" style="background-color: #FFE082; ">
             <div class="attendance-form">
                 <h2><i class="fas fa-bell"></i> Attendance</h2>
