@@ -28,6 +28,8 @@ import model.Student;
  */
 public class AttendServlet extends HttpServlet {
 
+    private static final String LISTA_ATTRIBUTE = "lista";
+
     ParentDAO dp = new ParentDAO();
     StudentDAO sp = new StudentDAO();
 
@@ -77,7 +79,7 @@ public class AttendServlet extends HttpServlet {
         request.setAttribute("ad", currentDate);
 
         List<Attend> lista = sp.getAttend(currentDate + "", a.getAccountid());
-        request.setAttribute("lista", lista);
+        request.setAttribute(LISTA_ATTRIBUTE, lista);
         List<Student> lists = sp.getStudentByAccid(a.getAccountid() + "");
         request.setAttribute("lists", lists);
         request.getRequestDispatcher("attend.jsp").forward(request, response);
@@ -118,7 +120,7 @@ public class AttendServlet extends HttpServlet {
                 request.setAttribute("attend", attend);
 
                 String pr = request.getParameter("pr");
-                
+
                 request.setAttribute("pr", pr);
 
                 java.util.Date utilDate;
@@ -134,21 +136,21 @@ public class AttendServlet extends HttpServlet {
 
                     request.setAttribute("errorMessage", "An error occurred while processing your request.");
                     request.getRequestDispatcher("attend.jsp").forward(request, response);
-                    return; 
+                    return;
                 }
 
                 lista = sp.getAttend(dob, a.getAccountid());
-                request.setAttribute("ad",dob);
+                request.setAttribute("ad", dob);
 
-                request.setAttribute("lista", lista);
+                request.setAttribute(LISTA_ATTRIBUTE, lista);
                 request.getRequestDispatcher("attend.jsp").forward(request, response);
                 break;
 
             case "search":
                 String ad = request.getParameter("ad");
                 lista = sp.getAttend(ad, a.getAccountid());
-                request.setAttribute("ad",ad);
-                request.setAttribute("lista", lista);
+                request.setAttribute("ad", ad);
+                request.setAttribute(LISTA_ATTRIBUTE, lista);
                 request.getRequestDispatcher("attend.jsp").forward(request, response);
                 break;
             case "delete":
