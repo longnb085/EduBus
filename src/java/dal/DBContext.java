@@ -14,18 +14,10 @@ public class DBContext {
             String url = "jdbc:sqlserver://localhost:1433;databaseName=BUS_SCHOOL_MANAGEMENT;encrypt=false";
 
             // Lấy username & password từ biến môi trường
-            String username = System.getenv("DB_USERNAME");
-            String password = System.getenv("DB_PASSWORD");
-
-            // Kiểm tra nếu biến môi trường chưa được thiết lập
-            if (username == null || password == null) {
-                throw new SQLException("Database username or password is not set in environment variables.");
-            }
-
+            String username = "sa";
+            String password  = "123";
             
-            
-            System.out.println(username + " " + password);
-            // Load driver và kết nối SQL Server
+                        // Load driver và kết nối SQL Server
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, username, password);
 
@@ -34,7 +26,4 @@ public class DBContext {
         }
     }
     
-    public static void main(String[] args) {
-        new DBContext();
-    }
 }
