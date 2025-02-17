@@ -2102,16 +2102,14 @@
     <body>
         <jsp:include page="header1.jsp"/>
 
-
         <!-- Page content -->
         <div class="w3-content" style="max-width:2000px;margin-top:46px">
-
 
             <div class=" w3-display-container w3-center">
                 <img src="./image/giphy2.gif" style="width:100%">
             </div>
 
-            <div class="w3-container" style="margin-left: 10px;margin-top: 10px;background-color: #fff8e1; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); padding: 32px; max-width:1360px;" id="band">
+            <div class="w3-container" style="margin-left: 10px;margin-top: 10px;background-color: #fff8e1; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); padding: 32px; max-width:1870px;" id="band">
                 <h2  style="color: #ff6f00; font-size: 36px; margin-bottom: 10px;text-align: center">BUS SCHOOL</h2>
                 <p  style="color: red; font-size: 24px; margin-bottom: 20px; text-align: center"><i>An Toàn - An Tâm - Đúng Giờ</i></p>
                 <p  style="color: #3e2723; font-size: 16px; line-height: 1.6; text-align: center">Là hệ thống công nghệ hỗ trợ cho 03 đối tượng: phụ huynh/học sinh, nhà trường
@@ -2139,7 +2137,6 @@
                 </div>
             </div>
 
-
             <div style="max-width: 2000px; margin: auto; padding: 20px; font-family: Arial, sans-serif ;">
 
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -2148,16 +2145,26 @@
 
                     <!-- Icons -->
                     <div style="position: absolute; top: 250px; left: 10px; z-index: 10; display: flex; gap: 10px;">
-                        <i class="fas fa-bus" style="font-size: 44px; color: #ff6f00; transition: transform 0.3s;" 
-                           onmouseover="this.style.transform = 'scale(1.2)';" 
-                           onmouseout="this.style.transform = 'scale(1)';"></i>
-                        <i class="fas fa-user-graduate" style="font-size: 44px; color: #ff6f00; transition: transform 0.3s;" 
-                           onmouseover="this.style.transform = 'scale(1.2)';" 
-                           onmouseout="this.style.transform = 'scale(1)';"></i>
-                        <i class="fas fa-chalkboard-teacher" style="font-size: 44px; color: #ff6f00; transition: transform 0.3s;" 
-                           onmouseover="this.style.transform = 'scale(1.2)';" 
-                           onmouseout="this.style.transform = 'scale(1)';"></i>
+                        <button style="background: none; border: none; padding: 0; cursor: pointer; font-size: 44px; color: #ff6f00; transition: transform 0.3s;" 
+                                onmouseover="this.style.transform = 'scale(1.2)';" 
+                                onmouseout="this.style.transform = 'scale(1)';" 
+                                aria-label="Bus Icon">
+                            <i class="fas fa-bus"></i>
+                        </button>
+                        <button style="background: none; border: none; padding: 0; cursor: pointer; font-size: 44px; color: #ff6f00; transition: transform 0.3s;" 
+                                onmouseover="this.style.transform = 'scale(1.2)';" 
+                                onmouseout="this.style.transform = 'scale(1)';" 
+                                aria-label="Graduate Icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </button>
+                        <button style="background: none; border: none; padding: 0; cursor: pointer; font-size: 44px; color: #ff6f00; transition: transform 0.3s;" 
+                                onmouseover="this.style.transform = 'scale(1.2)';" 
+                                onmouseout="this.style.transform = 'scale(1)';" 
+                                aria-label="Teacher Icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </button>
                     </div>
+
 
                     <div class="slide" style="display: flex; justify-content: center; align-items: center; transition: transform 0.5s ease-in-out;">
                         <img src="./image/slide1.png" alt="Bus2School Slide 1" style="width: 100%; border-radius: 10px;">
@@ -2175,17 +2182,28 @@
                         <img src="./image/slide4.jpg" alt="Bus2School Slide 4" style="width: 100%; border-radius: 10px;">
                     </div>
 
+                    <!-- Icons -->
                     <div style="position: absolute; top: 250px; right: 10px; z-index: 10; display: flex; gap: 10px;">
-                        <i class="fas fa-school" style="font-size: 44px; color: #ff6f00; transition: transform 0.3s;" 
-                           onmouseover="this.style.transform = 'scale(1.2)';" 
-                           onmouseout="this.style.transform = 'scale(1)';"></i>
-                        <i class="fas fa-book-open" style="font-size: 44px; color: #ff6f00; transition: transform 0.3s;" 
-                           onmouseover="this.style.transform = 'scale(1.2)';" 
-                           onmouseout="this.style.transform = 'scale(1)';"></i>
-                        <i class="fas fa-bell" style="font-size: 44px; color: #ff6f00; transition: transform 0.3s;" 
-                           onmouseover="this.style.transform = 'scale(1.2)';" 
-                           onmouseout="this.style.transform = 'scale(1)';"></i>
+                        <button style="background: none; border: none; padding: 0; cursor: pointer; font-size: 44px; color: #ff6f00; transition: transform 0.3s;" 
+                                onmouseover="this.style.transform = 'scale(1.2)';" 
+                                onmouseout="this.style.transform = 'scale(1)';" 
+                                aria-label="School Icon">
+                            <i class="fas fa-school"></i>
+                        </button>
+                        <button style="background: none; border: none; padding: 0; cursor: pointer; font-size: 44px; color: #ff6f00; transition: transform 0.3s;" 
+                                onmouseover="this.style.transform = 'scale(1.2)';" 
+                                onmouseout="this.style.transform = 'scale(1)';" 
+                                aria-label="Book Icon">
+                            <i class="fas fa-book-open"></i>
+                        </button>
+                        <button style="background: none; border: none; padding: 0; cursor: pointer; font-size: 44px; color: #ff6f00; transition: transform 0.3s;" 
+                                onmouseover="this.style.transform = 'scale(1.2)';" 
+                                onmouseout="this.style.transform = 'scale(1)';" 
+                                aria-label="Bell Icon">
+                            <i class="fas fa-bell"></i>
+                        </button>
                     </div>
+
                 </div>
 
 
@@ -2216,36 +2234,22 @@
                 </div>
 
             </div>
-
-
-
-
-
-            <!-- End Page Content -->
         </div>
 
-        <img src="./image/school bus_application.jpg" 
-             class="w3-image w3-greyscale-min" 
-             style="
-             width: 90%; /* Giảm kích thước hình ảnh xuống 90% */
-             margin-left: 5000px;
-             max-width: 1800px; /* Giới hạn chiều rộng tối đa để tránh tràn */
-             margin: 0 auto; /* Căn giữa hình ảnh */
-             display: block; /* Đảm bảo hình ảnh là block để căn giữa hoạt động */
-             border-radius: 15px;
-             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-             transition: transform 0.3s ease-in-out;
-             filter: grayscale(50%);
-             " 
-             data-aos="fade-up"
-             onmouseover="this.style.transform = 'scale(1.05)'; this.style.filter = 'grayscale(0%)';" 
-             onmouseout="this.style.transform = 'scale(1)'; this.style.filter = 'grayscale(50%)';"
-             alt="School Bus Application">
+        <a href="#" 
+           style="display: block; width: 90%; margin-left: 5000px; max-width: 1800px; margin: 0 auto; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out;" 
+           aria-label="Click to learn more about the School Bus Application"
+           onmouseover="this.querySelector('img').style.transform = 'scale(1.05)'; this.querySelector('img').style.filter = 'grayscale(0%)';"
+           onmouseout="this.querySelector('img').style.transform = 'scale(1)'; this.querySelector('img').style.filter = 'grayscale(50%)';"
+           data-aos="fade-up">
+            <img src="./image/school bus_application.jpg" 
+                 class="w3-image w3-greyscale-min" 
+                 style="width: 100%; max-width: 1800px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out; filter: grayscale(50%);"
+                 alt="School Bus Application">
+        </a>
 
 
         <%@include file="footer.jsp" %>
-
-
 
         <script>
             const slides = document.querySelectorAll('.slide');
