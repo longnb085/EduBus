@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dal;
 
 import java.sql.*;
@@ -10,47 +6,40 @@ import model.Account;
 import java.util.ArrayList;
 import model.User;
 
-/**
- *
- * @author DIEN MAY XANH
- */
 public class AccountDAO extends DBContext {
 
-
     public Account checkAcc(String user, String pass) {
-        String sql = "select * from Account where Username = '" + user + "' and Password = '" + pass + "'";
+        String sql = "select * from Account where Username = ? and Password = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, user);
+            ps.setString(2, pass);
 
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Account acc = new Account(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5));
-                acc.setSt(rs.getString(5));
-                System.out.println(acc.getSt());
-                return acc;
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    Account acc = new Account(rs.getInt(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getString(4),
+                            rs.getString(5));
+                    acc.setSt(rs.getString(5));
+                    System.out.println(acc.getSt());
+                    return acc;
+                }
             }
-        } catch (SQLException ex) {
+        } catch (SQLException e) {
+            System.out.println(e);
         }
         return null;
     }
 
     public boolean checkUserNameDuplicate(String username) {
         String sql = "select * from Account where Username = ?";
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
+        try (PreparedStatement st = connection.prepareStatement(sql)) {
             st.setString(1, username);
-            ResultSet rs = st.executeQuery();
-            if (rs.next()) {
-                Account acc = new Account(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5));
-                return true;
+            try (ResultSet rs = st.executeQuery()) {
+                if (rs.next()) {
+                    return true;
+                }
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -59,39 +48,31 @@ public class AccountDAO extends DBContext {
     }
 
     public void insertAccount(Account a) {
-
         String sql = "insert into Account (Username, Password, Role, Status) values(?,?,?,?)";
-
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, a.getUsername());
             ps.setString(2, a.getPassword());
             ps.setString(3, a.getRole());
             ps.setString(4, a.getSt());
             ps.executeUpdate();
-
-        } catch (SQLException ex) {
+        } catch (SQLException e) {
+            System.out.println(e);
         }
     }
 
     public void delete(String username) {
-        String sql = "DELETE FROM [dbo].[Account]\n"
-                + "      WHERE username = ?";
-
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
+        String sql = "DELETE FROM [dbo].[Account] WHERE username = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, username);
             ps.executeUpdate();
-
-        } catch (SQLException ex) {
+        } catch (SQLException e) {
+            System.out.println(e);
         }
-
     }
 
     public void changePassword(Account a) {
         String sql = "update Account set Password = ? where Username = ?";
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
+        try (PreparedStatement st = connection.prepareStatement(sql)) {
             st.setString(1, a.getPassword());
             st.setString(2, a.getUsername());
             st.executeUpdate();
@@ -103,10 +84,7 @@ public class AccountDAO extends DBContext {
     public List<Account> getAllUser() {
         List<Account> list = new ArrayList<>();
         String sql = "select * from Account";
-
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+        try (PreparedStatement ps = connection.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Account acc = new Account(rs.getInt(1),
                         rs.getString(2),
@@ -115,28 +93,28 @@ public class AccountDAO extends DBContext {
                         rs.getString(5));
                 list.add(acc);
             }
-        } catch (SQLException ex) {
+        } catch (SQLException e) {
+            System.out.println(e);
         }
         return list;
     }
 
     public Account getUserPassByPhone(String phone) {
-        String sql = "select *\n"
-                + "from Account a join Parent p\n"
-                + "on a.AccountID = p.AccountID\n"
-                + "where p.Phone = '" + phone + "'";
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Account acc = new Account(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5));
-                return acc;
+        String sql = "select * from Account a join Parent p on a.AccountID = p.AccountID where p.Phone = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, phone);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    Account acc = new Account(rs.getInt(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getString(4),
+                            rs.getString(5));
+                    return acc;
+                }
             }
-        } catch (SQLException ex) {
+        } catch (SQLException e) {
+            System.out.println(e);
         }
         return null;
     }
@@ -177,9 +155,7 @@ public class AccountDAO extends DBContext {
                 + "ORDER BY \n"
                 + "    a.AccountID;";
 
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+        try (PreparedStatement ps = connection.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 User o = new User(rs.getInt(1),
                         rs.getString(2),
@@ -190,22 +166,20 @@ public class AccountDAO extends DBContext {
                         rs.getString(7));
                 list.add(o);
             }
-        } catch (SQLException ex) {
+        } catch (SQLException e) {
+            System.out.println(e);
         }
         return list;
     }
 
     public void updateUser(String id, String status) {
-        String sql = "update Account\n"
-                + "set Status = ?\n"
-                + "where AccountID = " + id;
-
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
+        String sql = "update Account set Status = ? where AccountID = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, status);
+            ps.setString(2, id);
             ps.executeUpdate();
-
-        } catch (SQLException ex) {
+        } catch (SQLException e) {
+            System.out.println(e);
         }
     }
 
@@ -214,5 +188,4 @@ public class AccountDAO extends DBContext {
         Account acc = new Account(0, "aaa", "123", "Parent", "Inactive");
         a.insertAccount(acc);
     }
-
 }
