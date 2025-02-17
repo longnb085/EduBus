@@ -140,7 +140,6 @@
                                                             data-status="${u.status}">
                                                         <i class="fa-solid fa-pencil" data-toggle="tooltip" title="Update Status"></i>
                                                     </button>
-
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -153,7 +152,6 @@
             </div>
         </main>
 
-        <!-- Add Account Modal -->
         <div id="addAccountModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -161,7 +159,7 @@
                         <input type="hidden" name="action" value="add" />
                         <div class="modal-header">						
                             <h4 class="modal-title">Add Account</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">	
                             <div class="form-group">
@@ -191,7 +189,6 @@
             </div>
         </div>
 
-        <!-- Update Status Modal -->
         <div id="updateStatusModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -200,7 +197,7 @@
                         <input type="hidden" name="id" id="updateStatusId" />
                         <div class="modal-header">
                             <h4 class="modal-title">Update Status</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
@@ -223,14 +220,11 @@
         <jsp:include page="footer.jsp"/>
         <script>
 
-
-            // Populate update status modal with existing data
             $('#updateStatusModal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget); // Button that triggered the modal
                 var id = button.data('id');
                 var status = button.data('status');
 
-                // Update the modal's content
                 var modal = $(this);
                 modal.find('#updateStatusId').val(id);
                 modal.find('#updateStatusSelect').val(status);
