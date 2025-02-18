@@ -12,8 +12,11 @@ import java.time.LocalTime;
  */
 public class Pick {
 
-    private int studentid, tripid, stopid;
-    private LocalTime picktime, droptime;
+    private int studentid;
+    private int tripid;
+    private int stopid;
+    private LocalTime picktime;
+    private LocalTime droptime;
 
     public Pick() {
     }
